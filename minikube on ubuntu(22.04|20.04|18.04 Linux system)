@@ -1,0 +1,36 @@
+An introduction to minikube
+
+Minikube is an open source tool that was developed to enable developers and system administrators to run a single cluster of Kubernetes on their local machine. Minikube starts a single node kubernetes cluster locally with small resource utilization. This is ideal for development tests and POC purposes.
+//ensure docker is installed.follow this guide on how to install docker 
+
+Step 1: Update system
+
+Run the following commands to update all system packages to the latest release:
+
+ sudo apt update
+ sudo apt install apt-transport-https
+ sudo apt upgrade
+If a reboot is required after the upgrade then perform the process.
+
+[ -f /var/run/reboot-required ] && sudo reboot -f
+
+Step 2: Install KVM or VirtualBox Hypervisor
+For VirtualBox users, install VirtualBox using:
+
+sudo apt install virtualbox virtualbox-ext-pack
+
+Step 3: Download minikube on Ubuntu 22.04|20.04|18.04
+You need to download the minikube binary. I will put the binary under /usr/local/bin directory since it is inside $PATH.
+
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+chmod +x minikube-linux-amd64
+sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+
+N/B create user on your ubuntu machine that will run the minikube service as you can start minikube as a root user.add that user to the docker group
+this is to assume you have docker installed and configured properly.
+useradd devops; mkdir -p /home/devops/
+##add user to docker group 
+sudo usermod -aG docker devops
+
+to be continued............
+
